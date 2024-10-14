@@ -1,5 +1,6 @@
 import React from 'react'
-import { Search } from 'lucide-react'
+import { Search, Settings } from 'lucide-react'
+import Link from 'next/link'
 
 const NavBar = () => {
   return (
@@ -12,8 +13,22 @@ const NavBar = () => {
                 dark:text-white dark:placeholder-white' type="search" placeholder='Search..' />
             </div>
         </div>
+
+        {/* ICONS*/}
+        <div className='flex items-center'>
+          <Link href='/settings'
+          className='w-min h-min rounded p-2 hover:bg-gray-100'>
+            <Settings className='w-6 h-6 cursor-pointer dark:text-white'/>
+          </Link>
+          <div className='hidden w-[0.1rem] min-h-[2rem] bg-gray-200 md:inline-block'/>
+        </div>
     </div>
   )
 }
 
 export default NavBar
+
+{/*
+  h-min: menor espaço possível para caber todo o conteúdo
+  
+  */}
