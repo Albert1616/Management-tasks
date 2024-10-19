@@ -12,7 +12,7 @@ const NavBar = () => {
   return (
     <div className='flex items-center justify-between bg-white px-4 py-3 dark:bg-black'>
         <div className='flex gap-8 items-center outline-none'>
-          {!isSideBarCollapsed ? null : (
+          {isSideBarCollapsed ? null : (
             <button onClick={() => {dispatch(setIsSideBarCollapsed(!isSideBarCollapsed))}}>
               <Menu className='w-8 h-8 dark:text-white' />
             </button>

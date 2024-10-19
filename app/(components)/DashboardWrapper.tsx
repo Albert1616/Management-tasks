@@ -1,22 +1,26 @@
 "use client"
 
 import React, { useEffect } from 'react'
-import NavBar from './(components)/NavBar'
-import SideBar from './(components)/sidebar/SideBar'
-import StoreProvider, { useAppSelector } from './redux'
+import NavBar from './NavBar'
+import SideBar from './sidebar/SideBar'
+import StoreProvider, { useAppSelector } from '../redux'
 
 const DashboardLayout = ({children} : {children:React.ReactNode}) => {
   const isSideBarCollapsed = useAppSelector((state) => state.global.isSideBarCollapsed);
   const isDarkMode = useAppSelector((state) => state.global.isDarkMode);
 
   useEffect(() => {
-    isDarkMode? document.documentElement.classList.add("dark") : document.documentElement.classList.remove("dark")
-  }, [isDarkMode])
+    if(isDarkMode){
+      document.documentElement.classList.add("dark")
+    }else{
+      document.documentElement.classList.remove("dark")
+    }
+  })
 
   return (
       <div className='flex min-h-screen w-full bg-gray-50 text-gray-900'>
           <SideBar />
-          <main className={`dark:bg-dark-bg flex w-full flex-col bg-gray-50 ${isSideBarCollapsed? '': 'md:pl-64'}`}>
+          <main className={`dark:bg-dark-bg flex w-full flex-col bg-gray-50`}>
               <NavBar />
               {children}
           </main>
