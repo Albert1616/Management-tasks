@@ -1,0 +1,38 @@
+{
+  "name": "management-server",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "seed": "ts-node prisma/seed.ts",
+    "build": "rimraf dist && npx tsc",
+    "start": "npm run build && node dist/index.js",
+    "dev": "npm run build && concurrently \"npx tsc -w\" \"nodemon --exec ts-node src/index.ts\""
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/morgan": "^1.9.9",
+    "@types/node": "^22.7.7",
+    "concurrently": "^9.0.1",
+    "nodemon": "^3.1.7",
+    "rimraf": "^6.0.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.21.1",
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "helmet": "^8.0.0",
+    "management-server": "file:",
+    "morgan": "^1.10.0",
+    "prisma": "^5.21.1"
+  },
+  "commentaries": {
+    "build": "limpa a pasta dist e executa o compilador do tsc para compilar typescript em javascript",
+    "start": "primeiro executa build, depois inicia a aplicação gerada na pasta dist",
+    "dev": "primeiro executa build, depois usa o concurrently para:iniciar o compilador tsc em modo de observação e monitor as mudanças nos arquivos com nodemon"
+  }
+}

@@ -7,6 +7,7 @@ import { useAppDispatch, useAppSelector } from '../../redux';
 import { setIsSideBarCollapsed } from '@/state';
 import SideBarIcon from './SideBarIcon';
 import Link from 'next/link';
+import {links_sidebar, lst_priorities} from '@/app/utils/lst_utils';
 
 const SideBar = () => {
   const [showProjects, setShowProjects] = useState<boolean>(true); 
@@ -49,24 +50,40 @@ const SideBar = () => {
         </div>
         {/* NAVBAR LINKS */}
         <nav className='z-10 w-full'>
-            <SideBarIcon label='Home' href='/' isCollapsed Icon={Home}/>
-            <SideBarIcon label='Timeline' href='/timeline' isCollapsed Icon={Briefcase}/>
-            <SideBarIcon label='Search' href='/search' isCollapsed Icon={Search}/>
-            <SideBarIcon label='Settings' href='/settings' isCollapsed Icon={Settings}/>
-            <SideBarIcon label='User' href='/user' isCollapsed Icon={User}/>
-            <SideBarIcon label='Users' href='/users' isCollapsed Icon={Users}/>
+            {links_sidebar.map((link, index) => <SideBarIcon label={link.label}
+            href={link.href} Icon={link.icon} isCollapsed key={index}/>)}
         </nav>
-
+        
+        {/* PROJECTS */}
         <button className='font-medium flex items-center justify-between px-6 py-2' 
         onClick={() => setShowProjects((prev) => !prev)}>
-            <span className='text-gray-400'>Projects</span>
+            <span className='text-gray-300'>Projects</span>
             {showProjects? (
-                <ChevronUp className='w-6 y-6'/>
+                <ChevronUp className='w-6 y-6 dark:text-white'/>
             ) : (
-                <ChevronDown className='w-6 y-6'/>
+                <ChevronDown className='w-6 y-6 dark:text-white'/>
             )}
         </button>
-    </div>  )
+
+        {/* PRIORITIES */}
+        <button className='font-medium flex items-center justify-between px-6 py-2' 
+        onClick={() => setShowPriority((prev) => !prev)}>
+            <span className='text-gray-300'>Priorities</span>
+            {showPriority? (
+                <ChevronUp className='w-6 y-6 dark:text-white'/>
+            ) : (
+                <ChevronDown className='w-6 y-6 dark:text-white'/>
+            )}
+        </button>
+
+        {showPriority&& (
+            <>
+                {lst_priorities.map((priority, index) => <SideBarIcon label={priority.label}
+            href={priority.href} Icon={priority.icon} isCollapsed key={index}/>)}
+            </>
+        )}
+    </div>  
+    )
 }
 
 export default SideBar;
