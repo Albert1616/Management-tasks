@@ -9,7 +9,10 @@ const dotenv_1 = __importDefault(require("dotenv"));
 const helmet_1 = __importDefault(require("helmet"));
 const morgan_1 = __importDefault(require("morgan"));
 const cors_1 = __importDefault(require("cors"));
-const routes_1 = __importDefault(require("./routes/routes"));
+//ROUTES
+const ProjectsRoutes_1 = __importDefault(require("./routes/ProjectsRoutes"));
+const ProjectsRoutes_2 = __importDefault(require("./routes/ProjectsRoutes"));
+const TaskRoutes_1 = __importDefault(require("./routes/TaskRoutes"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
@@ -22,6 +25,8 @@ app.use((0, cors_1.default)());
 app.get("/", (req, res) => {
     res.send("Home route");
 });
-app.use(routes_1.default);
+app.use(ProjectsRoutes_1.default);
+app.use("/projects", ProjectsRoutes_2.default);
+app.use("/tasks", TaskRoutes_1.default);
 const port = process.env.PORT || 8000;
-app.listen(3333, () => console.log(`Server is running on port: ${port}`));
+app.listen(port, () => console.log(`Server is running on port: ${port}`));
