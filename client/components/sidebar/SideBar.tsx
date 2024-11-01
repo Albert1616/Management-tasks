@@ -3,11 +3,12 @@
 
 import { Apple, Briefcase, ChevronDown, ChevronUp, Home, LockIcon, Search, Settings, User, Users, X } from 'lucide-react';
 import React, { useState } from 'react'
-import { useAppDispatch, useAppSelector } from '../../redux';
+import { useAppDispatch, useAppSelector } from '../../app/redux';
 import { setIsSideBarCollapsed } from '@/state';
 import SideBarIcon from './SideBarIcon';
 import Link from 'next/link';
 import {links_sidebar, lst_priorities} from '@/app/utils/lst_utils';
+import { useGetProjectsQuery } from '@/state/api';
 
 const SideBar = () => {
   const [showProjects, setShowProjects] = useState<boolean>(true); 
@@ -15,6 +16,9 @@ const SideBar = () => {
 
   const isSideBarCollapsed = useAppSelector((state) => state.global.isSideBarCollapsed);
   const dispatch = useAppDispatch();
+
+  const { data:projects } = useGetProjectsQuery();
+
   console.log(isSideBarCollapsed);
 
   return (
@@ -64,6 +68,17 @@ const SideBar = () => {
                 <ChevronDown className='w-6 y-6 dark:text-white'/>
             )}
         </button>
+
+        {/* PROJECT LINKS */}
+
+        {showProjects&& projects?.map((project) =>(
+            <SideBarIcon
+            key={project.id}
+            Icon={Briefcase}
+            label={project.title}
+            href={`/projects/${project.id}`}
+            isCollapsed />
+        ))}
 
         {/* PRIORITIES */}
         <button className='font-medium flex items-center justify-between px-6 py-2' 

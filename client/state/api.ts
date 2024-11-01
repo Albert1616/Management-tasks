@@ -1,5 +1,4 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query";
-import { url } from "inspector";
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export interface Project{ //Inteface types for project
     id: number,
@@ -99,10 +98,18 @@ export const api = createApi({ //REDUX - ideal para usar em aplicações redux
                     body: task
                 }),
                 invalidatesTags:["Tasks"]
+            }),
+            updatedTaskStatus: build.mutation<Task, {taskId:number; status: string}>({
+                query: ({taskId, status}) => ({
+                    url: `tasks/${taskId}/status`, //params na url
+                    method: "PATCH", //atualização
+                    body: {status}
+                }),
+                invalidatesTags: (result, error, {taskId}) =>[
+                    {type: "Tasks", id:  taskId}
+                ]
             })
         }), //define endpoints
 })
 
-export const {
-    getProjects, createProject
-} = api.endpoints;
+export const { useGetProjectsQuery, useCreateProjectMutation } = api;
