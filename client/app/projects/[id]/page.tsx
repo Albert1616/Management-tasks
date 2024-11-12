@@ -1,3 +1,4 @@
+import ProjectHeader from '@/components/project/ProjectHeader'
 import React from 'react'
 
 type Props = {
@@ -8,7 +9,9 @@ type Props = {
 
 const page = ({params}: Props) => {
   return (
-    <div>page</div>
+    <div className='pt-3 px-2'>
+      <ProjectHeader title="Product Desing Development"/>
+    </div>
   )
 }
 

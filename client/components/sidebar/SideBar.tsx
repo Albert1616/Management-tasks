@@ -24,7 +24,7 @@ const SideBar = () => {
   return (
     <div className={`fixed flex flex-col h-full bg-white dark:bg-black
     transition-all duration-300 shadow-xl overflow-y-auto z-40
-    ${isSideBarCollapsed? "w-64" : "w-0 hidden"}`}>
+    ${isSideBarCollapsed? "w-60" : "w-0 hidden"}`}>
         {/*LOGO */}
 
         <div className='z-50 w-full min-h-[50px] flex items-center justify-between 
@@ -61,7 +61,7 @@ const SideBar = () => {
         {/* PROJECTS */}
         <button className='font-medium flex items-center justify-between px-6 py-2' 
         onClick={() => setShowProjects((prev) => !prev)}>
-            <span className='text-gray-300'>Projects</span>
+            <span className='text-gray-300 dark:text-white'>Projects</span>
             {showProjects? (
                 <ChevronUp className='w-6 y-6 dark:text-white'/>
             ) : (
@@ -75,7 +75,7 @@ const SideBar = () => {
             <SideBarIcon
             key={project.id}
             Icon={Briefcase}
-            label={project.title}
+            label={project.name}
             href={`/projects/${project.id}`}
             isCollapsed />
         ))}
@@ -83,7 +83,7 @@ const SideBar = () => {
         {/* PRIORITIES */}
         <button className='font-medium flex items-center justify-between px-6 py-2' 
         onClick={() => setShowPriority((prev) => !prev)}>
-            <span className='text-gray-300'>Priorities</span>
+            <span className='text-gray-300 dark:text-white'>Priorities</span>
             {showPriority? (
                 <ChevronUp className='w-6 y-6 dark:text-white'/>
             ) : (

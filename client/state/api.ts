@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export interface Project{ //Inteface types for project
     id: number,
-    title: string,
+    name: string,
     description?:string,
     startDate?: string,
     endDate?: string
