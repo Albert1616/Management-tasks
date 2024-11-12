@@ -1,6 +1,10 @@
+'use client'
+
 import { LucideIcon } from "lucide-react";
 import { usePathname } from "next/navigation";
 import Link from 'next/link'
+import { useDispatch } from "react-redux";
+import { setIsSideBarCollapsed } from "@/state";
 
 interface IconProps{
     label:string,
@@ -11,11 +15,12 @@ interface IconProps{
 
 const SideBarIcon = ({label, Icon, isCollapsed, href} : IconProps) =>{
     const pathName = usePathname();
+    const dispatch = useDispatch();
     const isActive = pathName === href || (pathName === "/" && href === "/dashboard");
     const windownWidth = window.innerWidth;
 
     return (
-        <Link href={href} className="w-full">
+        <Link href={href} className="w-full" onClick={() => dispatch(setIsSideBarCollapsed(false))}>
             <div className={`relative flex items-center gap-3 cursor-pointer transition-colors hover:bg-gray-100
             dark:bg-black dark:hover:bg-gray-700 px-6 py-3
                 ${isActive? "bg-gray-100 text-white dark:bg-gray-600" : ""}`}>

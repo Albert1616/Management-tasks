@@ -18,8 +18,7 @@ const SideBar = () => {
   const dispatch = useAppDispatch();
 
   const { data:projects } = useGetProjectsQuery();
-
-  console.log(isSideBarCollapsed);
+  console.log(projects);
 
   return (
     <div className={`fixed flex flex-col h-full bg-white dark:bg-black

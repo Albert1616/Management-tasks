@@ -1,5 +1,8 @@
+'use client'
+
+import Board from '@/components/BoardView'
 import ProjectHeader from '@/components/project/ProjectHeader'
-import React from 'react'
+import React, { useState } from 'react'
 
 type Props = {
     params: {
@@ -8,9 +11,15 @@ type Props = {
 }
 
 const page = ({params}: Props) => {
+  const [activeTab, setActiveTab] = useState("Board");
+
   return (
     <div className='pt-3 px-2'>
-      <ProjectHeader title="Product Desing Development"/>
+      <ProjectHeader title="Product Desing Development" activeTab={activeTab}
+      setActiveTab={setActiveTab} />
+      {activeTab === "Board" ? (
+        <Board/>
+      ) :null}
     </div>
   )
 }

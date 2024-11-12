@@ -112,4 +112,4 @@ export const api = createApi({ //REDUX - ideal para usar em aplicações redux
         }), //define endpoints
 })
 
-export const { useGetProjectsQuery, useCreateProjectMutation } = api;
+export const { useGetProjectsQuery, useCreateProjectMutation, useGetTasksQuery, useUpdatedTaskStatusMutation } = api;
