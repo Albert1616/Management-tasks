@@ -85,12 +85,13 @@ export const api = createApi({ //REDUX - ideal para usar em aplicações redux
                 }),
                 invalidatesTags:["Projects"]
             }), //PATCH, DELETE, PUT, POST
-            getTasks: build.query<Task[], {projectId: number}>({
-                query: (projectId) => `tasks?projectId=${projectId}`,
-                providesTags: (result) => result 
-                ? result.map(({id}) => ({type:"Tasks" as const, id}))
-                : [{type:"Tasks" as const}],
-            }),
+            getTasks: build.query<Task[], { projectId: number }>({
+                query: ({ projectId }) => `tasks?projectId=${projectId}`,
+                providesTags: (result) =>
+                  result
+                    ? result.map(({ id }) => ({ type: "Tasks" as const, id }))
+                    : [{ type: "Tasks" as const }],
+              }),
             createTask: build.mutation<Task, Partial<Task>>({
                 query: (task) =>({
                     url: "Tasks",

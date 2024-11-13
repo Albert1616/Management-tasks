@@ -64,7 +64,7 @@ const TabButton = ({
     return (
         <button className={`relative flex items-center gap-2
             dark:text-white hover:text-blue-600 after:absolute after:-bottom-[12px] after:left-0
-            after:h-[1px] after:w-full hover:after:bg-blue-500 ${active? "text-blue-600 after:bg-blue-500" : ""}`}
+            after:h-[1px] after:w-full hover:after:bg-blue-500 ${active? "text-blue-600 dark:text-blue-600 after:bg-blue-500" : ""}`}
             onClick={() => setActiveTab(name)}>
             {icon}
             {name}

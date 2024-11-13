@@ -10,7 +10,7 @@ interface IconProps{
     label:string,
     Icon:LucideIcon,
     isCollapsed:boolean,
-    href:string
+    href:string,
 }
 
 const SideBarIcon = ({label, Icon, isCollapsed, href} : IconProps) =>{

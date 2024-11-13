@@ -18,7 +18,7 @@ const page = ({params}: Props) => {
       <ProjectHeader title="Product Desing Development" activeTab={activeTab}
       setActiveTab={setActiveTab} />
       {activeTab === "Board" ? (
-        <Board/>
+        <Board id={params.id} key={params.id} setIsOpenModalTask={(isOpen:boolean) => isOpen}/>
       ) :null}
     </div>
   )
