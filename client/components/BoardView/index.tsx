@@ -1,5 +1,6 @@
 import { useGetTasksQuery, useUpdatedTaskStatusMutation } from '@/state/api';
-import { DndProvider, useDrop } from 'react-dnd'
+import { DndProvider, useDrag, useDrop } from 'react-dnd'
+import {format} from 'date-fns'
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import {Task} from '@/state/api'
 import React from 'react'
@@ -52,15 +53,15 @@ interface TaskColumnsProps{
 }
 
 const TaskColumn = ({status, tasks, moveTask, setIsModalTaskOpen} : TaskColumnsProps) =>{
-    const [{ isOver }, drop] = useDrop(() => ({
-        accept:"Task",
-        drop: (item: {id:number}) => moveTask(item.id, status),
-        collect: (monitor:any) =>({
+    const [{ isOver }, drop] = useDrop(() => ({ //DROP ZONE
+        accept:"Task", // Items of type Task
+        drop: (item: {id:number}) => moveTask(item.id, status), //Funtion to execute 
+        collect: (monitor:any) =>({ // verify drop zone
             isOver: !!monitor.isOver()
     })
     }))
 
-  const tasksCount = tasks?.filter((task) => task.status === status).length;
+  const tasksCount = tasks?.filter((task) => task.status?.toLowerCase() === status.toLowerCase()).length;
 
   const statusColor:any = {
     "To Do":"#3EB256",
@@ -97,9 +98,9 @@ const TaskColumn = ({status, tasks, moveTask, setIsModalTaskOpen} : TaskColumnsP
                 </div>
             </div>
         </div>
-        {tasks.filter((task) => task.status === status).map((task) =>(
+        {/* {tasks.filter((task) => task.status === status).map((task) =>(
             <Task key={task.id} task={task}/>
-        ))}
+        ))} */}
     </div>
   )
 }
@@ -108,8 +109,21 @@ interface TaskProps{
     task:Task
 }
 
-const Task = ({task} : TaskProps) =>{
-      
+const TaskItem = ({task} : TaskProps) =>{
+    const [{ isDragging }, drag ] = useDrag(() =>({
+        type: "Task",
+        item: {id: task.id},
+        collect: (monitor:any) =>({ // verify drop zone
+            isDragging: !!monitor.isDragging()
+        })
+    }))
+
+    const tags = task.tags ? task.tags.split(",") : [];
+
+    const formattedStartDate = task.startDate ? format(new Date(task.startDate), "P") : "";
+    const formattedDueDate = task.dueDate ? format(new Date(task.dueDate), "P") : "";
+
+    const numberOfComments = task.comments ? task.comments.length : 0;
 }
 
 
