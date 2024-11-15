@@ -17,6 +17,7 @@ export const getTasks = async(
                 author: true,
                 assignee: true,
                 comments: true,
+                attachments: true,
             }
         })
         res.status(200).json(tasks);
