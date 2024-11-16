@@ -64,7 +64,7 @@ export interface Task{
     author?: User;
     assignee?: User;
     comments?: Comment[];
-    attachaments?: Attachament[];
+    attachments?: Attachament[];
 }
 
 export const api = createApi({ //REDUX - ideal para usar em aplicações redux

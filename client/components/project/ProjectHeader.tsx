@@ -18,7 +18,7 @@ const ProjectHeader = ({title, activeTab, setActiveTab}: Props) => {
         </div>
         <div className='flex flex-col sm:flex-row-reverse sm:justify-between mt-5 py-3 gap-5 border-y border-gray-200 w-full
         dark:border-gray-400'>
-            <div className='flex gap-2'>
+            <div className='flex gap-2 dark:text-white'>
                 <button>
                     <Filter className='w-5 h-5'/>
                 </button>
@@ -63,7 +63,7 @@ const TabButton = ({
     const active = name === activeTab;
     return (
         <button className={`relative flex items-center gap-2
-            dark:text-white hover:text-blue-600 after:absolute after:-bottom-[14px] after:left-0
+            dark:text-white hover:text-blue-600 after:absolute after:-bottom-[12px] sm:after:-bottom-[14px] after:left-0
             after:h-[1px] after:w-full hover:after:bg-blue-500 dark:hover:text-blue-600 ${active? "text-blue-600 dark:text-blue-600 after:bg-blue-500" : ""}`}
             onClick={() => setActiveTab(name)}>
             {icon}

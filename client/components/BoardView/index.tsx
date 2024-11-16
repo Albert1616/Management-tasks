@@ -119,9 +119,7 @@ const TaskItem = ({task} : TaskProps) =>{
         collect: (monitor:any) =>({ // verify drop zone
             isDragging: !!monitor.isDragging()
         })
-    }))
-    console.log(task);
-
+    }))    
     const tags = task.tags ? task.tags.split(",") : [];
 
     const formattedStartDate = task.startDate ? format(new Date(task.startDate), "P") : "";
@@ -144,9 +142,14 @@ const TaskItem = ({task} : TaskProps) =>{
         <div ref={(instance) => {drag(instance)}}
         className={`flex flex-col gap-2 w-full px-2 py-1 bg-white shadow-sm rounded-md
         mt-2 ${isDragging ? "opacity-50" : "opacity-100"}`}>
-            {/* {task.attachaments && task.attachaments.length > 0 &&(
-                <p>okokjj</p>
-            )} */}
+            {task.attachments && task.attachments.length > 0 &&(
+                <Image
+                 src={`/${task.attachments[0].fileURL}`}
+                 alt={task.attachments[0].fileName}
+                 width={400}
+                 height={200}
+                 className='h-auto'/>
+            )}
             <div className='flex items-center justify-between'>
                 <div className='flex items-center gap-2'>
                     {task.priority&& <TaG tag={task.priority} key={task.title}/>}
@@ -190,7 +193,7 @@ const TaskItem = ({task} : TaskProps) =>{
                     <div className='flex items-center gap-1'>
                         <MessageSquareMore size={18}/>
                         <span className='text-lg font-semibold'>
-                            {task.comments?.length}
+                            {numberOfComments}
                         </span>
                     </div>
                 </div>

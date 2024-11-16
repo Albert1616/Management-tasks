@@ -1,6 +1,7 @@
 'use client'
 
 import Board from '@/components/BoardView'
+import List from '@/components/ListView'
 import ProjectHeader from '@/components/project/ProjectHeader'
 import React, { useState } from 'react'
 
@@ -19,7 +20,9 @@ const page = ({params}: Props) => {
       setActiveTab={setActiveTab} />
       {activeTab === "Board" ? (
         <Board id={params.id} key={params.id} setIsOpenModalTask={(isOpen:boolean) => isOpen}/>
-      ) :null}
+      ) : activeTab === "List" ? (
+        <List id={params.id}/>
+      ) : null}
     </div>
   )
 }
