@@ -3,6 +3,7 @@
 import Board from '@/components/BoardView'
 import List from '@/components/ListView'
 import ProjectHeader from '@/components/project/ProjectHeader'
+import TimeLine from '@/components/TimeLineView'
 import React, { useState } from 'react'
 
 type Props = {
@@ -22,6 +23,8 @@ const page = ({params}: Props) => {
         <Board id={params.id} key={params.id} setIsOpenModalTask={(isOpen:boolean) => isOpen}/>
       ) : activeTab === "List" ? (
         <List id={params.id}/>
+      ) : activeTab === "TimeLine" ? (
+        <TimeLine id={params.id} setIsOpenModalTask={() =>{}}/> 
       ) : null}
     </div>
   )
