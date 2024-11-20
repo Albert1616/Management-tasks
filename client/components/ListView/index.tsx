@@ -14,9 +14,9 @@ const ListView = ({id}: Props) => {
   if(error) return <div>Error while fetchin tasks</div>
   return (
     <div className='px-3 py-2'>
-        <header className='font-bold text-2xl mb-3 dark:text-white'>
+        <h1 className='font-bold text-2xl mb-3 dark:text-white'>
             ListView
-        </header>
+        </h1>
         <div className='h-full w-full grid grid-cols-1 md:grid-cols-2
         lg:grid-cols-4 gap-4'>
             {tasks?.map((task) => <TaskCard task={task}/>)}

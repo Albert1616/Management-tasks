@@ -55,7 +55,7 @@ const TimeLine = ({id, setIsOpenModalTask}: Props) => {
   return (
     <div className='px-3 lg:px-6'>
       <div className="flex items-center justify-between gap-2 py-5">
-        <h1 className='text-lg font-bold dark:text-white'>Project Tasks TimeLine</h1>
+        <h1 className='font-bold text-xl mb-3 dark:text-white'>Project Tasks TimeLine</h1>
 
         <div className='relative inline-block w-64'>
           <select id="select-viewmode" value={displayOptions.viewMode}
