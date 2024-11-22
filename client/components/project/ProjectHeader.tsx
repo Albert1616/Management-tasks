@@ -1,20 +1,24 @@
 'use client'
 
+import ModalNewProject from '@/app/projects/ModalNewProject';
 import { Clock, Filter, Grid3X3, List, Share, Table } from 'lucide-react';
-import React from 'react'
+import React, { useState } from 'react'
 
 interface Props{
     title:string,
     activeTab:string,
-    setActiveTab: (tab:string) => void;
+    setActiveTab: (tab:string) => void,
 }
 
 const ProjectHeader = ({title, activeTab, setActiveTab}: Props) => {
+  const [isModalNewProjectOpen, setIsModalNewProjectOpen] = useState(false);
   return (
     <div className='px-3 lg:px-6'>
+        <ModalNewProject isOpen={isModalNewProjectOpen} isClose={() => setIsModalNewProjectOpen(false)}/>
         <div className='flex w-full items-center justify-between'>
             <h1 className='text-2xl md:text-3xl font-bold dark:text-white'>{title}</h1>
-            <button className='p-2 rounded bg-blue-400 text-white text-lg font-semibold'>New Board+</button>
+            <button className='p-2 rounded bg-blue-400 text-white text-lg font-semibold'
+            onClick={() => {console.log(isModalNewProjectOpen); setIsModalNewProjectOpen(true)}}>New Board+</button>
         </div>
         <div className='flex flex-col sm:flex-row-reverse sm:justify-between mt-5 py-3 gap-5 border-y border-gray-200 w-full
         dark:border-gray-400'>

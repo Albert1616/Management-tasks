@@ -66,9 +66,17 @@ const TableView = ({id, setIsOpenModalTask}: Props) => {
       
   return (
     <div className='w-full px-3 py-2 lg:px-6'>
-        <h1 className='font-bold text-2xl mb-3 dark:text-white'>
+        <div className='w-full flex items-center justify-between'>
+          <h1 className='font-bold text-2xl mb-3 dark:text-white'>
             Tasks Table View
-        </h1>
+          </h1>
+
+          <button className='py-1 px-3 text-white font-bold rounded bg-blue-600 hover:bg-blue-800'
+          onClick={() => setIsOpenModalTask(true)}>
+            Add Task +
+          </button>
+        </div>
+
         <div className='pt-2'>
             <DataGrid 
             columns={columns}

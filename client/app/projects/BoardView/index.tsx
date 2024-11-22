@@ -9,14 +9,14 @@ import Image from 'next/image';
 
 type Props = { //PROPS TASK
     id: string,
-    setIsOpenModalTask: (isOpen:boolean) => void;
+    setIsOpenModalNewTask: (isOpen:boolean) => void;
 }
 
 const statusTask = [ // POSSIBLE STATUS FOR SOMETHING TASK
     "To Do", "Work In Progress", "Under Review", "Completed" //TASK STATUS
 ];
 
-const BoardView = ({id, setIsOpenModalTask}: Props) => { // GENERAL BOARD
+const BoardView = ({id, setIsOpenModalNewTask}: Props) => { // GENERAL BOARD
   const {
     data: tasks, isLoading, error
   } = useGetTasksQuery({projectId: Number(id)}); //GET TASK FOR THE ESPECIFY ID
@@ -40,7 +40,7 @@ const BoardView = ({id, setIsOpenModalTask}: Props) => { // GENERAL BOARD
                 status={status}
                 tasks={tasks || []}
                 moveTask={moveTask}
-                setIsModalTaskOpen={setIsOpenModalTask}/>
+                setIsModalTaskOpen={setIsOpenModalNewTask}/>
             ))}    
         </div>
     </DndProvider>
