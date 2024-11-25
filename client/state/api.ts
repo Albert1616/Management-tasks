@@ -77,7 +77,7 @@ export const api = createApi({ //REDUX - ideal para usar em aplicações redux
     baseQuery: fetchBaseQuery({
         baseUrl: process.env.NEXT_PUBLIC_API_BASE_URL,}),
         reducerPath: "api",
-        tagTypes:["Projects", "Tasks", "Search"],
+        tagTypes:["Projects", "Tasks", "Search", "Users"],
         endpoints: (build) =>({
             getProjects: build.query<Project[], void>({ //GET
                 query: () => "Projects", //query usada
@@ -118,6 +118,10 @@ export const api = createApi({ //REDUX - ideal para usar em aplicações redux
                 invalidatesTags: (result, error, {taskId}) =>[
                     {type: "Tasks", id:  taskId}
                 ]
+            }),
+            getUsers: build.query<User[], void>({
+                query: () => "users",
+                providesTags:["Users"]
             })
         }), //define endpoints
 })
@@ -125,4 +129,5 @@ export const api = createApi({ //REDUX - ideal para usar em aplicações redux
 export const { 
     useGetProjectsQuery, useCreateProjectMutation, 
     useGetTasksQuery, useUpdatedTaskStatusMutation, 
-    useCreateTaskMutation, useSearchQuery } = api;
+    useCreateTaskMutation, useSearchQuery,
+    useGetUsersQuery } = api;

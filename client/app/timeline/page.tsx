@@ -47,7 +47,7 @@ const TimeLine = (props: Props) => {
   if(error) return <div>Error to retrieve projects timeline</div>
 
   return (
-    <div className='px-3 lg:px-6'>
+    <div className='p-4'>
         <div className='flex items-center justify-between py-6'>
             <h1 className='font-bold text-2xl mb-3 dark:text-white'>
                 Project TimeLine
