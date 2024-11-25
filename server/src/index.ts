@@ -9,6 +9,7 @@ import cors from "cors";
 import router from "./routes/ProjectsRoutes";
 import ProjectRoutes from "./routes/ProjectsRoutes";
 import TaskRoutes from "./routes/TaskRoutes";
+import SearchRoutes from "./routes/SearchRoutes";
 
 dotenv.config();
 const app = express();
@@ -27,6 +28,7 @@ app.get("/" ,(req,res) =>{
 app.use(router);
 app.use("/projects", ProjectRoutes);
 app.use("/tasks", TaskRoutes);
+app.use("/search", SearchRoutes);
 
 
 const port = process.env.PORT || 8000;

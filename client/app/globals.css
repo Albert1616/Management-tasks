@@ -55,7 +55,10 @@ body,
 .timeline ._3T42e {
   @apply bg-white dark:bg-dark-bg;
 }
-.timeline ._29NTg {
+.timeline ._nI1Xw, ._WuQ0f, ._3lLk3, ._2dZTy{
+  @apply dark:text-white;
+}
+.timeline ._29NTg{
   @apply dark:text-neutral-500;
 }
 

@@ -67,11 +67,17 @@ export interface Task{
     attachments?: Attachament[];
 }
 
+export interface SearchResults{
+    tasks?: Task[],
+    projects?: Project[],
+    users?: User[]
+}
+
 export const api = createApi({ //REDUX - ideal para usar em aplicações redux
     baseQuery: fetchBaseQuery({
         baseUrl: process.env.NEXT_PUBLIC_API_BASE_URL,}),
         reducerPath: "api",
-        tagTypes:["Projects", "Tasks"],
+        tagTypes:["Projects", "Tasks", "Search"],
         endpoints: (build) =>({
             getProjects: build.query<Project[], void>({ //GET
                 query: () => "Projects", //query usada
@@ -92,6 +98,10 @@ export const api = createApi({ //REDUX - ideal para usar em aplicações redux
                     ? result.map(({ id }) => ({ type: "Tasks" as const, id }))
                     : [{ type: "Tasks" as const }],
               }),
+            search: build.query<SearchResults,{ query: string}>({
+                query: ({query}) => `search&query=${query}`,
+                providesTags: ["Search"]
+            }),
             createTask: build.mutation<Task, Partial<Task>>({
                 query: (task) =>({
                     url: "Tasks",
@@ -113,4 +123,7 @@ export const api = createApi({ //REDUX - ideal para usar em aplicações redux
         }), //define endpoints
 })
 
-export const { useGetProjectsQuery, useCreateProjectMutation, useGetTasksQuery, useUpdatedTaskStatusMutation, useCreateTaskMutation } = api;
+export const { 
+    useGetProjectsQuery, useCreateProjectMutation, 
+    useGetTasksQuery, useUpdatedTaskStatusMutation, 
+    useCreateTaskMutation, useSearchQuery } = api;

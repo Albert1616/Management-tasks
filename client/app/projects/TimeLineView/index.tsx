@@ -4,7 +4,8 @@ import { useAppSelector } from '@/app/redux';
 import { useGetTasksQuery } from '@/state/api';
 import React, { useMemo, useState } from 'react'
 import { DisplayOption, Gantt, ViewMode } from 'gantt-task-react'
-import "gantt-task-react/dist/index.css"
+import "gantt-task-react/dist/index.css";
+
 
 type Props = {
     id:string,
@@ -77,7 +78,7 @@ const TimeLine = ({id, setIsOpenModalTask}: Props) => {
           viewMode={displayOptions.viewMode}
           columnWidth={displayOptions.viewMode === "Month" ? 150 : 100}
           barBackgroundColor={isDarkMode ? "#101214" : "#aeb8c2"}
-              barBackgroundSelectedColor={isDarkMode ? "#000" : "#9ba1a6"}
+          barBackgroundSelectedColor={isDarkMode ? "#000" : "#9ba1a6"}
           />
         </div>
       </div>

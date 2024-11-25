@@ -13,6 +13,7 @@ const cors_1 = __importDefault(require("cors"));
 const ProjectsRoutes_1 = __importDefault(require("./routes/ProjectsRoutes"));
 const ProjectsRoutes_2 = __importDefault(require("./routes/ProjectsRoutes"));
 const TaskRoutes_1 = __importDefault(require("./routes/TaskRoutes"));
+const SearchRoutes_1 = __importDefault(require("./routes/SearchRoutes"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
@@ -28,5 +29,6 @@ app.get("/", (req, res) => {
 app.use(ProjectsRoutes_1.default);
 app.use("/projects", ProjectsRoutes_2.default);
 app.use("/tasks", TaskRoutes_1.default);
+app.use("/search", SearchRoutes_1.default);
 const port = process.env.PORT || 8000;
 app.listen(port, () => console.log(`Server is running on port: ${port}`));
