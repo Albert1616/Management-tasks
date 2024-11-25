@@ -20,7 +20,7 @@ const page = ({params}: Props) => {
 
   return (
     <div className='pt-3 px-2'>
-      <ModalNewTask isOpen={isOpenModalNewTask} isClose={() => setIsOpenModalNewTask(false)}/>
+      <ModalNewTask id={params.id} isOpen={isOpenModalNewTask} isClose={() => setIsOpenModalNewTask(false)}/>
       <ProjectHeader title="Product Desing Development" activeTab={activeTab}
       setActiveTab={setActiveTab} />
       {activeTab === "Board" ? (

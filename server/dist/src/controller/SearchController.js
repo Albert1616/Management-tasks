@@ -23,6 +23,7 @@ const search = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
                 ]
             }
         });
+        console.log(tasks);
         const projects = yield prisma.project.findMany({
             where: {
                 OR: [
@@ -38,11 +39,11 @@ const search = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
                 ]
             }
         });
-        res.status(200).send({ tasks, projects, users });
+        res.status(200).json({ tasks, projects, users });
     }
     catch (error) {
         res.status(500).
-            json({ message: `Error to creating tasks, projects and users: ${error.message}` });
+            json({ message: `Error to retriving search results: ${error.message}` });
     }
 });
 exports.search = search;

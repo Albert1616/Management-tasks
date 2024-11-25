@@ -98,9 +98,8 @@ export const api = createApi({ //REDUX - ideal para usar em aplicações redux
                     ? result.map(({ id }) => ({ type: "Tasks" as const, id }))
                     : [{ type: "Tasks" as const }],
               }),
-            search: build.query<SearchResults,{ query: string}>({
-                query: ({query}) => `search&query=${query}`,
-                providesTags: ["Search"]
+            search: build.query<SearchResults,string>({
+                query: (query) => `search?query=${query}`,
             }),
             createTask: build.mutation<Task, Partial<Task>>({
                 query: (task) =>({

@@ -5,7 +5,9 @@ const prisma = new PrismaClient();
 
 export const search = async (req:Request, res:Response)
 :Promise<void> => {
+
     const {query} = req.query;
+    
     try{
         const tasks = await prisma.task.findMany({
             where:{
@@ -15,6 +17,8 @@ export const search = async (req:Request, res:Response)
                 ]
             }
         });
+
+        console.log(tasks);
     
         const projects = await prisma.project.findMany({
             where:{
@@ -33,9 +37,9 @@ export const search = async (req:Request, res:Response)
             }
         });
 
-        res.status(200).send({tasks, projects, users});
+        res.status(200).json({tasks, projects, users});
     }catch(error:any){
         res.status(500).
-        json({message:`Error to creating tasks, projects and users: ${error.message}`});
+        json({message:`Error to retriving search results: ${error.message}`});
     }
 }
