@@ -22,13 +22,13 @@ export const links_sidebar = [
         "icon": Settings,
     },
     {
-        "label": "User",
-        "href": "/user",
+        "label": "Users",
+        "href": "/users",
         "icon": User,
     },
     {
-        "label": "Users",
-        "href": "/users",
+        "label": "Teams",
+        "href": "/teams",
         "icon": Users,
     },
 ];

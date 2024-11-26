@@ -73,11 +73,20 @@ export interface SearchResults{
     users?: User[]
 }
 
+export interface Team {
+    id:number,           
+    teamName:string,            
+    productOwnerUserId:number,
+    projectManagerUserId:number,
+    //projectTeams         ProjectTeam[]
+    user:User[]
+  }
+
 export const api = createApi({ //REDUX - ideal para usar em aplicações redux
     baseQuery: fetchBaseQuery({
         baseUrl: process.env.NEXT_PUBLIC_API_BASE_URL,}),
         reducerPath: "api",
-        tagTypes:["Projects", "Tasks", "Search", "Users"],
+        tagTypes:["Projects", "Tasks", "Search", "Users", "Teams"],
         endpoints: (build) =>({
             getProjects: build.query<Project[], void>({ //GET
                 query: () => "Projects", //query usada
@@ -122,6 +131,10 @@ export const api = createApi({ //REDUX - ideal para usar em aplicações redux
             getUsers: build.query<User[], void>({
                 query: () => "users",
                 providesTags:["Users"]
+            }),
+            getTeams: build.query<Team[], void>({
+                query: () => "/teams",
+                providesTags: ["Teams"]
             })
         }), //define endpoints
 })
@@ -130,4 +143,4 @@ export const {
     useGetProjectsQuery, useCreateProjectMutation, 
     useGetTasksQuery, useUpdatedTaskStatusMutation, 
     useCreateTaskMutation, useSearchQuery,
-    useGetUsersQuery } = api;
+    useGetUsersQuery, useGetTeamsQuery } = api;
