@@ -6,4 +6,5 @@ const route = (0, express_1.Router)();
 route.get("/", TaskController_1.getTasks);
 route.post("/", TaskController_1.createTask);
 route.patch("/:id/status", TaskController_1.updateTaskStatus); //Param in route
+route.get("/user", TaskController_1.getUserTasks);
 exports.default = route;
