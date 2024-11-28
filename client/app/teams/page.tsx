@@ -4,6 +4,8 @@ import { useGetTeamsQuery } from '@/state/api'
 import { DataGrid, GridColDef, GridToolbarContainer, GridToolbarExport, GridToolbarFilterButton } from '@mui/x-data-grid';
 import React from 'react'
 import { useAppSelector } from '../redux';
+import LoadingComponent from '@/components/LoadingComponent';
+import ErrorComponent from '@/components/ErrorComponent';
 
 const CustomToolBar = () =>(
     <GridToolbarContainer className='toolbar flex gap-2'>
@@ -43,8 +45,8 @@ const Teams = () => {
     data:teams, isLoading, isError
   } = useGetTeamsQuery();
 
-  if(isLoading) return <div>Loading...</div>
-  if(isError) return <div>Error to fecthing teams</div>
+  if (isLoading) return <LoadingComponent />
+  if(isError) return <ErrorComponent message='error to fething teams'/>
   return (
     <div className='p-4'>
         <h1 className='font-bold text-2xl mb-3 dark:text-white'>

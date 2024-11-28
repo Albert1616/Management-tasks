@@ -5,6 +5,8 @@ import { useGetTasksQuery } from '@/state/api';
 import React, { useMemo, useState } from 'react'
 import { DisplayOption, Gantt, ViewMode } from 'gantt-task-react'
 import "gantt-task-react/dist/index.css";
+import ErrorComponent from '@/components/ErrorComponent';
+import LoadingComponent from '@/components/LoadingComponent';
 
 
 type Props = {
@@ -50,8 +52,8 @@ const TimeLine = ({id, setIsOpenModalTask}: Props) => {
     }))
   }
 
-  if (isLoading) return <div>Loading...</div>
-  if (error) return <div>Error to get task timeline</div>
+  if (isLoading) return <LoadingComponent />
+  if (error) return <ErrorComponent message='Error to retriving tasks'/>
 
   return (
     <div className='px-3 lg:px-6'>

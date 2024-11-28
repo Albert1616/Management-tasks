@@ -6,6 +6,8 @@ import {Task} from '@/state/api'
 import React from 'react'
 import { EllipsisVertical, MessageSquareMore, Plus } from 'lucide-react';
 import Image from 'next/image';
+import LoadingComponent from '@/components/LoadingComponent';
+import ErrorComponent from '@/components/ErrorComponent';
 
 type Props = { //PROPS TASK
     id: string,
@@ -27,8 +29,8 @@ const BoardView = ({id, setIsOpenModalNewTask}: Props) => { // GENERAL BOARD
     updateStatus({taskId: id, status: toStatus});
   }
 
-  if (isLoading) return <div>Loading...</div>
-  if (error) return <div>Error to fetching tasks</div>
+  if (isLoading) return <LoadingComponent />
+  if (error) return <ErrorComponent message="Error to retring tasks"/>
 
   return (
     // DND PROVIDER 

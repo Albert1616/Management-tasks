@@ -5,6 +5,8 @@ import React from 'react'
 import { useAppSelector } from '../redux';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { CartesianGrid, ResponsiveContainer, BarChart, XAxis, YAxis, Tooltip, Legend, Bar, Pie, Cell, PieChart } from 'recharts';
+import LoadingComponent from '@/components/LoadingComponent';
+import ErrorComponent from '@/components/ErrorComponent';
 
 const taskColumns: GridColDef[] = [
   {
@@ -47,8 +49,8 @@ const HomePage = () => {
     const isDarkMode = useAppSelector((state) => state.global.isDarkMode);
 
     
-    if (tasksLoading || projectsLoading) return <div>Loading...</div>
-    if (tasksError || !tasks || !projects || projectsError) return <div>Error to retriving tasks or projects</div> 
+    if (tasksLoading || projectsLoading) return <LoadingComponent />
+    if (tasksError || !tasks || !projects || projectsError) return <ErrorComponent message='Error to retriving tasks or projects'/> 
 
     const priorityCount = tasks.reduce((acc: Record<string, number>, task:Task) =>{
         const priority = task.priority;
@@ -86,7 +88,6 @@ const HomePage = () => {
         text: "#000000",
       };
 
-    console.log(taskDistribution);
     return (
     <div className='container h-full w-full bg-gray-100 bg-transparent p-4 md:mx-auto'>
       <h1 className='font-bold text-2xl mb-3 dark:text-white'>

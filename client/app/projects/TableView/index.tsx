@@ -1,4 +1,6 @@
 import { useAppSelector } from '@/app/redux';
+import ErrorComponent from '@/components/ErrorComponent';
+import LoadingComponent from '@/components/LoadingComponent';
 import { useGetTasksQuery } from '@/state/api';
 import { DataGrid, GridColDef } from '@mui/x-data-grid'
 import React from 'react'
@@ -64,6 +66,8 @@ const TableView = ({id, setIsOpenModalTask}: Props) => {
 
       ];
       
+  if (isLoading) return <LoadingComponent />;
+  if (error) return <ErrorComponent message="Error to retring tasks"/>
   return (
     <div className='w-full px-3 py-2 lg:px-6'>
         <div className='w-full flex items-center justify-between'>

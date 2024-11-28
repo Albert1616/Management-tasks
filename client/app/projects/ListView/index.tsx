@@ -1,6 +1,8 @@
 import { useGetTasksQuery } from '@/state/api'
 import React from 'react'
 import TaskCard from './TaskCard'
+import LoadingComponent from '@/components/LoadingComponent';
+import ErrorComponent from '@/components/ErrorComponent';
 
 type Props = {
     id:string,
@@ -11,8 +13,8 @@ type Props = {
 const ListView = ({id, setIsOpenModalNewTask}: Props) => {
   const {data: tasks, isLoading, error} = useGetTasksQuery({projectId: Number(id)})
 
-  if(isLoading) return <div>Loading...</div>
-  if(error) return <div>Error while fetchin tasks</div>
+  if(isLoading) return <LoadingComponent />
+  if (error) return <ErrorComponent message="Error to retring tasks"/>
   return (
     <div className='px-3 py-2'>
         <div className='w-full flex items-center justify-between'>

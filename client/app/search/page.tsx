@@ -7,6 +7,8 @@ import {debounce} from 'lodash';
 import TaskCard from '../projects/ListView/TaskCard';
 import ProjectCard from '@/components/project/ProjectCard';
 import UserCard from '@/components/UserCard';
+import LoadingComponent from '@/components/LoadingComponent';
+import ErrorComponent from '@/components/ErrorComponent';
 
 const Search = () => {
 
@@ -44,8 +46,8 @@ const Search = () => {
         </div>
 
         <div className='mt-8'>
-            {isLoading&&(<div>Loading...</div>)}
-            {isError&&(<div>Error to execute search</div>)}
+            {isLoading&&(<LoadingComponent />)}
+            {isError&&(<ErrorComponent message='Error to execute search'/>)}
             {!isLoading && !isError && SearchResults&&(
                 <div>
                     {SearchResults?.tasks && SearchResults.tasks.length > 0 &&(

@@ -5,6 +5,8 @@ import React from 'react'
 import { DataGrid, GridColDef, GridToolbarContainer, GridToolbarExport, GridToolbarFilterButton } from '@mui/x-data-grid'
 import { useAppSelector } from '../redux'
 import Image from 'next/image'
+import LoadingComponent from '@/components/LoadingComponent'
+import ErrorComponent from '@/components/ErrorComponent'
 
 type Props = {}
 
@@ -58,8 +60,8 @@ const Users = (props: Props) => {
         },
     ]
 
-  if(isLoading) return <div>Loading...</div>
-  if(isError) return <div>Error to fetching users</div>
+  if (isLoading) return <LoadingComponent />
+  if(isError) return <ErrorComponent message='Error to fetching users'/>
   return (
     <div className='p-4'>
         <h1 className='font-bold text-2xl mb-3 dark:text-white'>

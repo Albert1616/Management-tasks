@@ -5,6 +5,8 @@ import { DisplayOption, Gantt, ViewMode } from 'gantt-task-react';
 import React, { useMemo, useState } from 'react'
 import { useAppSelector } from '../redux';
 import "gantt-task-react/dist/index.css"
+import LoadingComponent from '@/components/LoadingComponent';
+import ErrorComponent from '@/components/ErrorComponent';
 
 
 type Props = {}
@@ -43,8 +45,8 @@ const TimeLine = (props: Props) => {
     ) || []
   }, [projects])
 
-  if(isLoading) return <div>Loading...</div>
-  if(error) return <div>Error to retrieve projects timeline</div>
+  if (isLoading) return <LoadingComponent />
+  if(error) return <ErrorComponent message='Error to retrieve projects timeline'/>
 
   return (
     <div className='p-4'>

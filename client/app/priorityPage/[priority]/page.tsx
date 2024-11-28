@@ -6,6 +6,8 @@ import { useAppSelector } from '../../redux'
 import ModalNewTask from '@/components/ModalNewTask'
 import TaskCard from '@/app/projects/ListView/TaskCard'
 import { DataGrid, GridColDef } from '@mui/x-data-grid'
+import LoadingComponent from '@/components/LoadingComponent'
+import ErrorComponent from '@/components/ErrorComponent'
 
 type Props = {
     params:{
@@ -81,8 +83,8 @@ const PriorityPage = ({params}: Props) => {
     setView(view);
   }
 
-  if (isLoading) return <div>Loading...</div>
-  if (isError) return <div>Error to retring task's user</div>
+  if (isLoading) return <LoadingComponent />
+  if (isError) return <ErrorComponent message="Error to retring task's user"/>
   return (
     <div className='p-6'>
       <ModalNewTask
