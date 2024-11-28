@@ -107,6 +107,13 @@ export const api = createApi({ //REDUX - ideal para usar em aplicações redux
                     ? result.map(({ id }) => ({ type: "Tasks" as const, id }))
                     : [{ type: "Tasks" as const }],
               }),
+              getTasksByUser:build.query<Task[], number>({
+                query: (userId) => `tasks/user?userId=${userId}`,
+                providesTags: (result, error, userId) =>
+                    result ? 
+                    result.map(({ id }) => ({ type: "Tasks", id }))
+                    : [{type: "Tasks", id:userId}],
+              }),
             search: build.query<SearchResults,string>({
                 query: (query) => `search?query=${query}`,
             }),
@@ -140,7 +147,12 @@ export const api = createApi({ //REDUX - ideal para usar em aplicações redux
 })
 
 export const { 
-    useGetProjectsQuery, useCreateProjectMutation, 
-    useGetTasksQuery, useUpdatedTaskStatusMutation, 
-    useCreateTaskMutation, useSearchQuery,
-    useGetUsersQuery, useGetTeamsQuery } = api;
+    useGetProjectsQuery, 
+    useCreateProjectMutation, 
+    useGetTasksQuery, 
+    useUpdatedTaskStatusMutation, 
+    useCreateTaskMutation, 
+    useSearchQuery,
+    useGetUsersQuery, 
+    useGetTeamsQuery,
+    useGetTasksByUserQuery } = api;

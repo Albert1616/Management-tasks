@@ -6,10 +6,10 @@ import Modal from '../Modal';
 type Props = {
     isOpen:boolean,
     isClose: () => void,
-    id: string
+    id?: string | null
 }
 
-const ModalNewTask = ({isOpen, isClose, id}: Props) => {
+const ModalNewTask = ({isOpen, isClose, id = null}: Props) => {
 
   const [createTask, {isLoading}] = useCreateTaskMutation();
 
@@ -22,6 +22,7 @@ const ModalNewTask = ({isOpen, isClose, id}: Props) => {
   const [dueDate, setDueDate] = useState("");
   const [authorUserId, setAuthorUserId] = useState("");
   const [assignedUserId, setAssignedUserId] = useState("");
+  const [projectId, setProjectId] = useState("");
 
   const handleSubmit = async () =>{
     if (!isValidForm()) return;
@@ -39,13 +40,13 @@ const ModalNewTask = ({isOpen, isClose, id}: Props) => {
         dueDate: dueDateFormatted,
         authorUserId: parseInt(authorUserId),
         assignedUserId: parseInt(assignedUserId),
-        id: Number(id)
-        
+        projectId: id === null ? Number(projectId) : Number(id)
+         
     })
   }
 
   const isValidForm = () =>{
-    return taskName && authorUserId;
+    return taskName && authorUserId && (id !== null || projectId);
  }
 
   const selectStyles = "mb-4 block w-full rounded border border-gray-399 px-3 py-1";
@@ -110,8 +111,19 @@ const ModalNewTask = ({isOpen, isClose, id}: Props) => {
             <input type="text" value={authorUserId} placeholder='Author User ID'
             className={inputStyles} onChange={(e) => setAuthorUserId(e.target.value)}/>
 
-            <input type="text" value={assignedUserId} placeholder='Assinged User ID'
-            className={inputStyles} onChange={(e) => setAssignedUserId(e.target.value)}/>
+            <input type="text" 
+            value={assignedUserId} 
+            placeholder='Assinged User ID'
+            className={inputStyles} 
+            onChange={(e) => setAssignedUserId(e.target.value)} />
+
+            {id === null && (
+                <input type="text" 
+                value={projectId} 
+                placeholder='Project Id'
+                className={inputStyles} 
+                onChange={(e) => setProjectId(e.target.value)} />
+            )}
 
             <button
             className={`mt-4 flex w-full py-1 font-semibold text-lg rounded border border-transparent bg-blue-600 text-white items-center justify-center

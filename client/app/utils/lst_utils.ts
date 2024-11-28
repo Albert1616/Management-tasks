@@ -1,3 +1,4 @@
+import { Priority } from "@/state/api";
 import { AlertCircle, AlertOctagon, AlertTriangle, Briefcase, Home, Layers3, Search, Settings, ShieldAlert, User, Users } from "lucide-react";
 
 export const links_sidebar = [
@@ -37,27 +38,27 @@ export const lst_priorities = [
     {
         "label":"Urgent",
         "icon":AlertCircle,
-        "href":"/urgent"
+        "href":`priorityPage/${Priority.Urgent}`
     },
     {
         "label":"High",
         "icon":ShieldAlert,
-        "href":"/high"
+        "href":`priorityPage/${Priority.High}`
     },
     {
         "label":"Medium",
         "icon":AlertTriangle,
-        "href":"/medium"
+        "href":`priorityPage/${Priority.Medium}`
     },
     {
         "label":"Low",
         "icon":AlertOctagon,
-        "href":"/low"
+        "href":`priorityPage/${Priority.Low}`
     },
     {
         "label":"Backlog",
         "icon":Layers3,
-        "href":"/backlog"
+        "href":`priorityPage/${Priority.Backlog}`
     },
 
 ]
