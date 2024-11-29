@@ -34,7 +34,7 @@ const SideBar = () => {
                 </Link>
             </div>
 
-            <button onClick={() => dispatch(setIsSideBarCollapsed(!isSideBarCollapsed))}><X /></button>
+            <button onClick={() => dispatch(setIsSideBarCollapsed(!isSideBarCollapsed))} className='dark:text-white'><X /></button>
         </div>
         {/* TEAM */}
         <div className='flex gap-4 items-center border-y-[1.5px] px-6 py-4 border-gray-200'>

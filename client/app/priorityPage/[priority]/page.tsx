@@ -8,6 +8,8 @@ import TaskCard from '@/app/projects/ListView/TaskCard'
 import { DataGrid, GridColDef } from '@mui/x-data-grid'
 import LoadingComponent from '@/components/LoadingComponent'
 import ErrorComponent from '@/components/ErrorComponent'
+import { parseArgs } from 'util'
+import { parseDomainOfCategoryAxis } from 'recharts/types/util/ChartUtils'
 
 type Props = {
     params:{
@@ -67,8 +69,6 @@ const columns: GridColDef[] = [
 ];
 
 const PriorityPage = ({params}: Props) => {
-  console.log(params.priority);
-
   const [view, setView] = useState("list");
   const [isOpenModalNewTask, setIsOpenModalNewTask] = useState(false);
 
@@ -118,11 +118,11 @@ const PriorityPage = ({params}: Props) => {
         <div className='mt-8'>
           {view === "list" ? (
             <div className='grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-4'>
-              {tasksPriority.map((task) => (
-              <TaskCard task={task}/>))}
+              {tasksPriority.length > 0 ? tasksPriority.map((task) => (
+              <TaskCard task={task}/>)) : <h2 className='font-semibold text-lg dark:text-white'>No have tasks with priority <span className='font-bold'>{params.priority}</span></h2>}
             </div>
           )
-          :(
+          :tasksPriority.length > 0 ?(
           <DataGrid 
           columns={columns}
           rows={tasksPriority}
@@ -156,7 +156,9 @@ const PriorityPage = ({params}: Props) => {
               borderColor: `${isDarkMode ? "#2d3135" : "e5e7eb"}`,
               },
           }}/>
-          )}
+          )
+          : <h2 className='font-semibold text-lg dark:text-white'>No have tasks with priority <span className='font-bold'>{params.priority}</span></h2>
+          }
         </div>
       </div>
     </div>

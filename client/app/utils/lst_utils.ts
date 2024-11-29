@@ -38,27 +38,27 @@ export const lst_priorities = [
     {
         "label":"Urgent",
         "icon":AlertCircle,
-        "href":`priorityPage/${Priority.Urgent}`
+        "href":`/priorityPage/${Priority.Urgent}`
     },
     {
         "label":"High",
         "icon":ShieldAlert,
-        "href":`priorityPage/${Priority.High}`
+        "href":`/priorityPage/${Priority.High}`
     },
     {
         "label":"Medium",
         "icon":AlertTriangle,
-        "href":`priorityPage/${Priority.Medium}`
+        "href":`/priorityPage/${Priority.Medium}`
     },
     {
         "label":"Low",
         "icon":AlertOctagon,
-        "href":`priorityPage/${Priority.Low}`
+        "href":`/priorityPage/${Priority.Low}`
     },
     {
         "label":"Backlog",
         "icon":Layers3,
-        "href":`priorityPage/${Priority.Backlog}`
+        "href":`/priorityPage/${Priority.Backlog}`
     },
 
 ]
