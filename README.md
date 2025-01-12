@@ -27,7 +27,7 @@
 
 - [📍 Descrição(#-descrição)
 - [👾 Features](#-features)
-- [📁 Project Structure](#-project-structure)
+- [📁 Estrutura do projeto](#-estrutura-do-projeto)
   - [📂 Project Index](#-project-index)
 - [🚀 Getting Started](#-getting-started)
   - [☑️ Prerequisites](#-prerequisites)
@@ -71,7 +71,7 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão fo
 
 ---
 
-## 📁 Project Structure
+## 📁 Estrutura do Projeto
 
 ```sh
 └── Management-tasks.git/
@@ -632,34 +632,31 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão fo
 </details>
 
 ---
-## 🚀 Getting Started
+## 🚀 Início
 
-### ☑️ Prerequisites
+### ☑️ Pre-requisitos
 
-Before getting started with Management-tasks.git, ensure your runtime environment meets the following requirements:
+Antes de iniciar o projeto é necessário que você atenda aos seguintes pré requisitos:
 
-- **Programming Language:** TypeScript
-- **Package Manager:** Npm
-- **Container Runtime:** Docker
+- Ter o <a href="https://nodejs.org/en">Node.js</a> instalado na máquina. 
+- Ter algum gerenciador de pacotes para o Nodejs. Recomendo o <a href="https://www.npmjs.com/">NPM</a>.
+- Recomedável ter instalado algum editor de código, como o <a href="https://code.visualstudio.com/">VS Code</a>
 
+### ⚙️ Instalação
 
-### ⚙️ Installation
+Passo a passo para instalar e usar o projeto:
 
-Install Management-tasks.git using one of the following methods:
-
-**Build from source:**
-
-1. Clone the Management-tasks.git repository:
+1. Clone o repositório para sua máquina
 ```sh
 ❯ git clone https://github.com/Albert1616/Management-tasks.git
 ```
 
-2. Navigate to the project directory:
+2. Navegue até a pasta raiz do projeto:
 ```sh
-❯ cd Management-tasks.git
+❯ cd Management-tasks
 ```
 
-3. Install the project dependencies:
+3. Instale as dependências de desenvolvimento:
 
 
 **Using `npm`** &nbsp; [<img align="center" src="https://img.shields.io/badge/npm-CB3837.svg?style={badge_style}&logo=npm&logoColor=white" />](https://www.npmjs.com/)
@@ -684,13 +681,6 @@ Run Management-tasks.git using the following command:
 
 ```sh
 ❯ npm start
-```
-
-
-**Using `docker`** &nbsp; [<img align="center" src="https://img.shields.io/badge/Docker-2CA5E0.svg?style={badge_style}&logo=docker&logoColor=white" />](https://www.docker.com/)
-
-```sh
-❯ docker run -it {image_name}
 ```
 
 
