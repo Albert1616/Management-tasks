@@ -1,15 +1,12 @@
 # Dashboard of management tasks
 
 <p align="center">
-	<img src="https://img.shields.io/crates/l/MIT?style=default&logo=opensourceinitiative&
-	logoBackground=white&logoColor=white&color=0080ff" alt="license-mit">
+	<img src="https://img.shields.io/badge/license-MIT-blue" alt="license-mit">
 	<img src="https://img.shields.io/github/last-commit/Albert1616/Management-tasks?style=default&logo=git&logoColor=white&color=0080ff" alt="last-commit">
 	<img src="https://img.shields.io/badge/Language-Typescript-blue?style=default&color=0080ff&logo=typescript&logoColor=white" alt="repo-top-language">
 </p>
 
-___
 <img src="project-overview.png"/>
-<br>
 
 ## 🔗 Sumário
 
@@ -23,12 +20,10 @@ ___
   - [🔧 Instalação](#-instalação)
   - [🤖 Como usar](#-como-usar)
 
----
 ## 📍 Sobre
 
 Management task é um sistema de gerenciamento de projetos e tarefas, no qual o usuário pode criar times, incluir pessoas em times e criar tarefas personalizadas para os membros do projeto.
 
----
 
 ## 📌 Melhorias futuras
 O projeto ainda está em desenvolvimento e as próximas atualizações serão focadas nos seguintes aspectos:
@@ -38,7 +33,6 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão fo
 - [ ] **`Task 3`**: Sistema de login.
 - [ ] **`Task 3`**: Deploy do projeto.
 
----
 ## 👾 Funcionalidades
 
 <ul>
@@ -57,7 +51,6 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão fo
 - **Frontend**: Next.js, Tailwind CSS, Redux Toolkit, Redux Toolkit Query, Material UI Data Grid
  - **Backend**: Node.js with Express, Prisma (PostgreSQL ORM);
  - **DataBase**: PostgreSql, managed with pgAdmin;
----
 
 ## 📁 Estrutura do Projeto
 
@@ -91,7 +84,7 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão fo
         ├── src
         └── tsconfig.json
 ```
----
+
 ## 🚀 Início
 
 ### 📝 Pré-requisitos
@@ -115,8 +108,8 @@ Passo a passo para instalar e usar o projeto:
 ❯ cd Management-tasks
 ```
 
-3. Instale as dependências de desenvolvimento e defina as variávies de ambiente para o client e o server:
-**Using `npm`** &nbsp; [<img align="center" src="https://img.shields.io/badge/npm-CB3837.svg?style={badge_style}&logo=npm&logoColor=white" />](https://www.npmjs.com/)
+3. Instale as dependências de desenvolvimento e defina as variávies de ambiente para o client e o server:<br />
+**Using `npm`** &nbsp; [<img align="center" src="https://img.shields.io/badge/npm-CB3837.svg?style={badge_style}&logo=npm&logoColor=white" />](https://www.npmjs.com/)<br />
 	<b>Client</b>: 
 	- Acesse a pasta client
 	```sh
@@ -128,7 +121,7 @@ Passo a passo para instalar e usar o projeto:
 	```
 	- Crie na pasta raiz do server o arquivo ```.env.local```, onde irão ser definidas as variáveis de ambiente.
 	</br>
-	- Crie dentro do arquivo ```.env.local``` as variávies: ```NEXT_PUBLIC_API_BASE_URL = http://localhost:PORT```, em que PORT é a porta na qual o server estará em execução.
+	- Crie dentro do arquivo `.env.local` a variável: `NEXT_PUBLIC_API_BASE_URL = http://localhost:PORT`, em que PORT é a porta na qual o server estará em execução.
 
 	<b>Server</b>:
 
@@ -143,10 +136,10 @@ Passo a passo para instalar e usar o projeto:
 	```
 	
 	- Crie na pasta raiz do server o arquivo ```.env```, onde irão ser definidas as variáveis de ambiente.
-	</br>
-	- Crie dentro do arquivo ```.env``` as variávies: ```DATABASE_URL``` e ```PORT```, que são respectivamente a url de conexão com o banco de dados,consulte o <a href="https://www.prisma.io/docs/orm/overview/databases">prisma databases</a> para saber o padrão da sua url dependendo do banco de dados que você irá utilizar, e a porta na qual o projeto será executado, por padrão 8000.
-	</br>
-	- Para conectar o primsa ORM ao banco de dados execute o comando:
+	 Crie dentro do arquivo `.env` as variávies: `DATABASE_URL` e `PORT`, que são respectivamente a url de conexão com o banco de dados,consulte o <a 			 
+	        href="https://www.prisma.io/docs/orm/overview/databases">prisma databases</a> para saber o padrão da sua url dependendo do banco de dados que você irá utilizar, e a 
+        porta na qual o projeto será executado, por padrão 8000.
+	- Para conectar o primsa ORM ao banco de dados execute o comando:<br />
 	```sh
 	npx prisma migrate dev name --init
 	```
@@ -154,15 +147,6 @@ Passo a passo para instalar e usar o projeto:
 	```sh
 	npm run seed
 	```
-<!-- **Using `docker`** &nbsp; [<img align="center" src="https://img.shields.io/badge/Docker-2CA5E0.svg?style={badge_style}&logo=docker&logoColor=white" />](https://www.docker.com/)
-
-```sh
-❯ docker build -t Albert1616/Management-tasks.git .
-``` -->
-
-
-
-
 ### 🤖 Como usar
 Para executar o projeto siga os seguintes passos no ````/server```` e ```/client``` :
 </br>
